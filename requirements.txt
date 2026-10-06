@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-multipart
+streamlit
+requests
+pydantic
+python-dotenv
+groq
+langchain-groq
+langchain-core
+langchain-neo4j
+neo4j
+langgraph
+edge-tts
+pillow
