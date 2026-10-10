@@ -10,9 +10,9 @@ import edge_tts
 
 load_dotenv()
 
-# 1. INITIALIZE CLIENTS
+
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-# Vision model for OCR & parsing
+
 vision_llm = ChatGroq(model="qwen/qwen3.8-27b", temperature=0.1,max_tokens=600)
 
 
@@ -33,7 +33,7 @@ def extract_job_metadata(image_path: str) -> str:
     print(f"\n--- 1. PARSING JOB SCREENSHOT: {image_path} ---")
     base64_img = encode_image(image_path)
 
-    # Prompt forcing strict structured extraction
+    
     prompt = """
     Analyze this freelance job posting screenshot carefully.
     Extract the following details in a clean, structured format:
@@ -69,7 +69,7 @@ def parse_pitch_strategy(audio_path: str = None, typed_notes: str = "") -> str:
     """Combines spoken audio memo and typed user notes into a unified pitch strategy."""
     transcribed_voice = ""
 
-    # Transcribe voice if audio file is provided and exists
+
     if audio_path and os.path.exists(audio_path):
         print(f"\n--- 2. TRANSCRIBING VOICE MEMO: {audio_path} ---")
         with open(audio_path, "rb") as f:
@@ -81,7 +81,7 @@ def parse_pitch_strategy(audio_path: str = None, typed_notes: str = "") -> str:
             #
             transcribed_voice = None
 
-    # Merge audio + typed notes (The Hybrid Pattern)
+    
     strategy_parts = []
     if transcribed_voice:
         strategy_parts.append(f"Spoken Strategy: {transcribed_voice.strip()}")
@@ -106,7 +106,7 @@ async def main():
     )
     await comm.save(test_audio)
 
-    # 3. Optional typed notes (testing dual input)
+    
     my_typed_notes = "Include link to our deployed Hugging Face microservice demo."
 
     
