@@ -10,10 +10,7 @@ import edge_tts
 
 load_dotenv()
 
-# ==========================================
-# 1. INITIALIZE CLIENTS & MODELS
-# ==========================================
-# Fast writer model
+
 copywriter_llm = ChatGroq(model="openai/gpt-oss-20b", temperature=0.7)
 
 # Heavy reasoning judge model
@@ -24,12 +21,10 @@ graph = Neo4jGraph(
     url=os.getenv("NEO4J_URI"),
     username=os.getenv("NEO4J_USERNAME"),
     password=os.getenv("NEO4J_PASSWORD").strip(),
-    database="a7250f0e"
+    database=os.getenv("NEO4J_DATABASE")
 )
 
-# ==========================================
-# 2. DEFINE THE SHARED SWARM STATE
-# ==========================================
+
 class DealSniperState(TypedDict):
     job_data: str
     pitch_strategy: str
@@ -39,9 +34,6 @@ class DealSniperState(TypedDict):
     approved: bool
     coaching_notes: str
 
-# ==========================================
-# 3. SWARM AGENT NODES
-# ==========================================
 
 # AGENT 1: Market Strategist (GraphRAG)
 def market_strategist_node(state: DealSniperState):
