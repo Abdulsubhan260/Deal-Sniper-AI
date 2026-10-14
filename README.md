@@ -1,4 +1,4 @@
-#  DealSniper AI — Autonomous Freelance Job & Proposal Intelligence Machine
+#  DealSniper AI  Autonomous Freelance Job & Proposal Intelligence Machine
 
 An end-to-end multi-modal AI system that analyzes freelance job postings, audits client risk, retrieves market rate benchmarks using a Knowledge Graph, drafts high-converting proposals, and generates spoken interview preparation briefs.
 
